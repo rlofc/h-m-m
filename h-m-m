@@ -266,8 +266,9 @@ const special_keys =
 	'space' => "\040",
 	'tab'   => "\011",
 	'esc'   => "\033",
-	'equal' => "="
+	'equal' => "=",
 
+	'f1' => "\033\117\120"
 ];
 
 const reset_page            = "\033[2J\033[0;0f";
@@ -335,7 +336,7 @@ $keybindings['N'] = 'previous_search_result';
 
 $keybindings['o'] = 'insert_new_sibling';
 $keybindings['O'] = 'insert_new_child';
-$keybindings[special_keys['ctrl_o']] = 'open_link';
+$keybindings[special_keys['f1']] = 'open_link';
 
 $keybindings['p'] = 'paste_as_children';
 $keybindings['P'] = 'paste_as_siblings';
@@ -3619,8 +3620,9 @@ function open_link()
 {
 	global $mm;
 	message($mm,'Opening the node with xdg-open...');
-	exec('xdg-open "'.$mm['nodes'][ $mm['active_node'] ]['title'].'" >/dev/null 2>&1 &', $output, $result);
+	exec('./open_link.sh "'.$mm['nodes'][ $mm['root_id'] ]['title'].'" "'.$mm['nodes'][ $mm['active_node'] ]['title'].'" >/dev/null 2>&1 &', $output, $result);
 	display($mm);
+	center_active_node();
 }
 
 
