@@ -124,7 +124,7 @@ config($mm, 'clipboard_file',        "/tmp/h-m-m");
 config($mm, 'clipboard_in_command',  "");
 config($mm, 'clipboard_out_command', "");
 
-config($mm, 'auto_save',             false);
+config($mm, 'auto_save',             true);
 config($mm, 'echo_keys',             false);
 
 
